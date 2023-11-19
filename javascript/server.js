@@ -1,27 +1,28 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
+app.use(cors()); // Enable CORS for all routes
 
-// Connect to MongoDB
+// MongoDB Connection
 mongoose.connect('mongodb://localhost:27017/myDatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
 });
 
-// Define a schema for the User
+// User Schema and Model
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   passwordHash: { type: String, required: true }
 });
 
-// Create a model from the schema
 const User = mongoose.model('User', userSchema);
 
-// Registration endpoint
+// Registration Endpoint
 app.post('/api/register', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -39,7 +40,7 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// Login endpoint
+// Login Endpoint
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -60,12 +61,12 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// User data endpoint
+// User Data Endpoint
 app.get('/api/user/:email', async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email }).exec();
+    const user = await User.findOne({ email: req.params.email }, '-passwordHash').exec();
     if (user) {
-      res.json({ email: user.email });
+      res.json(user); // Sending back user data, excluding passwordHash
     } else {
       res.status(404).json({ status: 'error', message: 'User not found' });
     }
