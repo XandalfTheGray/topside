@@ -17,16 +17,7 @@ Step 4: To try out cursor on your own projects, go to the file menu (top left) a
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Hello World
-      </header>
-    </div>
-  );
-}
+import App from './App'; // Import App from the App.js file
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
