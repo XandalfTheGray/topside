@@ -11,9 +11,9 @@ app.use(cors()); // Enable CORS for all routes
 // Updated connection string to point to the 'topside' database
 mongoose.connect('mongodb://localhost:27017/topside', {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
+  useUnifiedTopology: true
 });
+
 
 // Error handling for MongoDB connection
 mongoose.connection.on('error', err => {
