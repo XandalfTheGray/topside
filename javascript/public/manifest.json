@@ -1,0 +1,21 @@
+{
+    "name": "Topside",
+    "short_name": "Topside",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "A platform for creating and managing RPG content.",
+    "icons": [
+      {
+        "src": "icons/medium-topside-icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/large-topside-icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
