@@ -93,7 +93,7 @@ app.get('/api/user/:email', async (req, res) => {
   }
 });
 
-// Server Listening on Port 3000
+// Server Listening on Port 3001
 app.listen(3001, () => {
   console.log('Server is running on port 3001');
 });
